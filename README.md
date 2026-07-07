@@ -5,15 +5,39 @@ bio, writing, contact) as plain HTML/CSS/JS. No build step, no framework — ope
 `index.html` and it works.
 
 ## Files
-- `index.html` — all page content and structure
+- `index.html` — homepage: hero, now, selected projects, experiments, bio, writing, contact
 - `styles.css` — all styling (colors, type, layout, responsive rules)
 - `script.js` — small scroll-reveal effect on the project/writing rows
+- `favicon.ico`, `apple-touch-icon.png` — browser tab icon
+- `og-image.png` — link preview image for LinkedIn/Slack/email
+- `projects/` — one dedicated page per selected project (case study detail)
 
 ## Editing content
 Everything is plain text in `index.html`. Each section is clearly commented
 (`<!-- ============ HERO ============ -->` etc.). To add a new project or essay,
-copy one `<article class="row reveal">...</article>` block and edit the text —
-no other changes needed, the layout adapts automatically.
+copy one `<a class="row reveal">...</a>` block and edit the text — no other
+changes needed, the layout adapts automatically.
+
+## Project detail pages
+Each project card on the homepage links to a real page in `projects/`
+(e.g. `projects/trust-layer-onboarding.html`). Each page has three parts:
+1. **Header + CTAs** — "Open Prototype" / "Try Product" buttons. Not every
+   project needs both — delete whichever `<a class="cta-button">` doesn't
+   apply, and point the remaining one's `href="#"` at your real link.
+2. **Read case study** — currently placeholder paragraphs marked
+   `[Placeholder]`. Replace with your real writeup; remove the orange
+   "Placeholder" tag once you do.
+3. **Architecture** — optional section for system/technical detail. Delete
+   the whole `<section>` if a project doesn't need it.
+
+To add a 4th project: copy `projects/pricing-architecture.html`, rename it,
+edit its content, then add a matching `<a class="row reveal">` link on the
+homepage pointing to it.
+
+## Experiments
+The Experiments section (homepage) links straight out to external sites
+(GitHub repos, live demos) — no detail pages. Just replace each `href="#"`
+with your real link.
 
 ## Editing look and feel
 All colors, fonts, and spacing live at the top of `styles.css` under `:root`.

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trust layer for fintech onboarding — Rajesh Sahu</title>
+<meta name="description" content="Case study: reframing fintech onboarding as a trust-building sequence.">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="back-link" href="../index.html">← Back to portfolio</a>
+      <span class="header-meta">India · Available selectively</span>
+    </div>
+  </header>
+
+  <section class="project-hero">
+    <div class="wrap">
+      <span class="section-label">01 — Selected project</span>
+      <h1 class="project-title">Trust layer for fintech onboarding</h1>
+      <p class="project-tags">Activation · Risk · Product systems</p>
+      <p class="project-oneliner">
+        Reframed onboarding as a trust-building sequence, reducing ambiguity between compliance,
+        account setup, and the user's first successful action.
+      </p>
+      <div class="cta-row">
+        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Open Prototype ↗</a>
+        <a class="cta-button" href="#" target="_blank" rel="noopener">Try Product ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Read case study</h2>
+      </div>
+      <div class="case-copy">
+        <h3>The problem</h3>
+        <p>Onboarding looked fine on a funnel chart — most users who started the flow eventually finished it. But that number was hiding the real story: people were completing onboarding without ever feeling like they understood what they'd just agreed to. Support tickets in the first week of an account's life were dominated by one theme — "why is my account restricted?" — even though every restriction was, technically, disclosed somewhere in the flow.</p>
+        <p>The actual cost wasn't drop-off. It was a slow leak of trust in the first week, right when a new user's tolerance for friction is lowest and their willingness to churn is highest. Compliance, account setup, and the user's first meaningful action were being designed as three separate steps owned by three separate teams, with no one responsible for whether the sequence made sense as a story.</p>
+
+        <h3>The framing</h3>
+        <p>I reframed onboarding as a trust-building sequence rather than a completion funnel. The question stopped being "how do we get people through this faster" and became "at each step, does the user understand why we're asking, and what happens next." That reframe changed what we measured — instead of just completion rate, we tracked first-week support contact rate and time-to-first-successful-action as the real signals of whether onboarding had worked.</p>
+        <p>I rejected two easier paths early on. One was simply shortening the flow — fewer fields, fewer screens — which would have improved completion metrics without addressing the actual confusion. The other was adding more explanatory copy at each step, which tends to bury the one sentence that matters under paragraphs nobody reads.</p>
+
+        <h3>Key decisions</h3>
+        <p>Instead, the flow was restructured around three principles:</p>
+        <p>1. <strong>Sequence compliance and setup by what the user needs to know when.</strong> Verification requirements that affected what the user could do immediately were surfaced before account setup; ones that only mattered later were deferred and re-surfaced at the moment they became relevant, instead of front-loaded.</p>
+        <p>2. <strong>Keep deliberate friction where risk actually lived, and remove it everywhere else.</strong> Identity verification stayed strict. Everything downstream of it — account configuration, preference setup — was simplified aggressively, since that's where friction was only costing us goodwill without buying us any real risk reduction.</p>
+        <p>3. <strong>Make restriction states legible in the moment, not discoverable later.</strong> If an account would be temporarily limited pending a check, the user saw that plainly at the point of setup, framed as a status with a clear resolution path — not as a support ticket waiting to happen.</p>
+
+        <h3>Outcome</h3>
+        <p>First-week support contact rate around account restrictions dropped meaningfully, and time-to-first-successful-action shortened, even though the compliance requirements themselves didn't change — only their sequencing and legibility did. The bigger shift was internal: onboarding stopped being three teams' separate handoffs and became one owned sequence, which made the next round of changes much faster to reason about and ship.</p>
+        <p>What I'd revisit: the restriction-state messaging still leans on generic language in a few edge cases. Given more time, I'd tailor that copy per restriction type rather than using one template for all of them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Architecture</h2>
+      </div>
+      <div class="case-copy">
+        <p>Onboarding state was modeled as a single source of truth shared across three previously siloed systems: identity verification, account provisioning, and the compliance rules engine. Rather than each team's system independently deciding what the user should see next, a shared "onboarding state" object tracked exactly which checks had passed, which were pending, and which restrictions were currently active — and every screen in the flow read from that same object.</p>
+        <p>This meant a restriction surfaced by the compliance engine at 2am could immediately change what account setup showed the user, without a manual handoff between teams. The trade-off was real: it required the three teams to agree on one shared schema for onboarding state, which took longer to negotiate upfront than building three independent flows would have — but it's what made the restriction-state messaging in "Key decisions" above possible at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-grid">
+      <div class="footer-copy">
+        <h2>For thoughtful product work, writing, or selective advisory conversations.</h2>
+        <p>Serious inquiries are welcome. Keep the note specific; Rajesh reads carefully and replies when there is a clear fit.</p>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:rajeshsahuiitk@gmail.com" class="contact-link">
+          <span class="icon">✉</span> rajeshsahuiitk@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/sahu-rajesh-160608/" target="_blank" rel="noopener" class="contact-link">
+          <span class="icon">in</span> LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 · Rajesh Sahu</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
