@@ -32,8 +32,8 @@
         An AI assistant that helps product managers generate hypotheses, prioritize experiments, define success metrics, and analyze results — making experimentation faster and more structured without requiring deep analytics expertise.
       </p>
       <div class="cta-row">
-        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Open Prototype ↗</a>
-        <a class="cta-button" href="#" target="_blank" rel="noopener">Try Product ↗</a>
+        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Live Prototype ↗</a>
+        <a class="cta-button" href="#" target="_blank" rel="noopener">60–90s Demo ↗</a>
       </div>
     </div>
   </section>
@@ -41,11 +41,10 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Read case study</h2>
+        <h2>Problem and impact</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — full case study coming soon</span>
-        <p>[Placeholder] Full writeup in progress — details on the problem, framing, key decisions, and outcome will go here.</p>
+        <p>Most PM tools optimize for the parts of experimentation that are already easy — tracking status, storing results. The part that actually determines whether a team ships the right thing is upstream of that: turning "onboarding completion is falling" into a problem statement that isn't just a feature idea wearing a disguise. That step usually happens in someone's head, gets skipped under deadline pressure, and the cost shows up months later as a team re-litigating a decision nobody can explain, or shipping a fix for a problem they never actually verified.</p>
       </div>
     </div>
   </section>
@@ -53,11 +52,55 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Architecture</h2>
+        <h2>My role and decisions</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — system detail coming soon</span>
-        <p>[Placeholder] Architecture and system design detail will go here once finalized.</p>
+        <p>I designed the product end to end: the core object model, the workflow, and the AI behavior spec. The decision I'd defend hardest is making the <strong>Decision Workspace</strong> — not the experiment — the unit of work. Every problem gets one workspace holding the problem statement, the evidence, every hypothesis considered including the rejected ones with reasons, the experiment design, and the final decision record. I also decided the AI should classify every piece of evidence a PM enters as fact, assumption, opinion, or unknown, rather than treating all input as equally true. That one rule does more to prevent bad decisions than any hypothesis-generation feature.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Solution and workflow</h2>
+      </div>
+      <div class="case-copy">
+        <p>The workspace moves through a fixed lifecycle — Draft → Problem Defined → Hypotheses → Experiment Planned → Running → Results Ready → Decision Made → Archived — so status is always legible without a status meeting. Five screens carry the whole flow: a dashboard, the workspace itself, a hypothesis board for scoring and comparing options side by side, an experiment plan the AI reviews before launch, and a results screen for interpreting what happened. Rejected hypotheses stay visible with their rejection reason, so teams stop re-pitching the same idea every quarter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>AI design</h2>
+      </div>
+      <div class="case-copy">
+        <p>The AI's job is to challenge, not generate. A weak version of this product hands over three hypotheses and calls it done. Mine is built to catch the PM smuggling an assumption into a problem statement — "onboarding is too long" when the evidence only shows <em>where</em> people drop off, not <em>why</em> — and say so before a sprint gets spent testing the wrong thing. Rules, not the model, own the hard boundaries: the AI can suggest a priority ranking for hypotheses, but the PM makes the final call; it can flag a weak experiment design (no primary metric, no guardrails), but it never declares an experiment successful on its own. The model proposes and questions; the human still owns every irreversible decision — what to test, what to ship, what to kill.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trade-offs and metrics</h2>
+      </div>
+      <div class="case-copy">
+        <p>I explicitly kept out live analytics integrations, auto-launched A/B tests, and Jira/Linear sync — all the things that make a demo look more finished than the underlying idea is. Results get entered manually for now, because the part worth proving isn't a data pipe, it's whether the interpretation step actually changes what a PM decides. Since this is a portfolio build rather than a shipped product with real usage, I'm not claiming numbers I don't have. What I'd measure in a real deployment: does time-to-decision shrink, do decision records actually get reread later (a proxy for whether they're trusted), and does the rejected-hypothesis log measurably cut down repeat pitches.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I would bring to your team</h2>
+      </div>
+      <div class="case-copy">
+        <p>This project is the clearest proof I have of one specific instinct: AI features are safest when they're built to disagree with the user, not just assist them. That's a harder design problem than a clean prompt-to-output wrapper, and it's the one I default to whenever a model's output is about to become someone's actual decision.</p>
+        <p class="architecture-link"><a href="#" target="_blank" rel="noopener">View detailed architecture ↗</a></p>
       </div>
     </div>
   </section>

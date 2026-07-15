@@ -35,8 +35,8 @@
         and improve accuracy.
       </p>
       <div class="cta-row">
-        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Open Prototype ↗</a>
-        <a class="cta-button" href="#" target="_blank" rel="noopener">Try Product ↗</a>
+        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Live Prototype ↗</a>
+        <a class="cta-button" href="#" target="_blank" rel="noopener">60–90s Demo ↗</a>
       </div>
     </div>
   </section>
@@ -44,11 +44,10 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Read case study</h2>
+        <h2>Problem and impact</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — full case study coming soon</span>
-        <p>[Placeholder] Full writeup in progress — details on the problem, framing, key decisions, and outcome will go here.</p>
+        <p>Automated matching handles most reconciliation volume without friction — it's the remainder that costs a company real time. When a transaction can't be matched automatically, a finance analyst has to piece together evidence scattered across bank feeds, ERP records, and email threads just to understand what happened, let alone resolve it. That fragmentation is what actually delays financial close, not the matching itself. And a delayed close isn't a minor inconvenience — it's the kind of thing a controller or CFO notices immediately, because it pushes back every downstream reporting deadline.</p>
       </div>
     </div>
   </section>
@@ -56,11 +55,55 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Architecture</h2>
+        <h2>My role and decisions</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — system detail coming soon</span>
-        <p>[Placeholder] Architecture and system design detail will go here once finalized.</p>
+        <p>I defined the product thesis, the workflow structure, and the rules governing where AI is allowed to act versus where a human has to. The decision I'd defend hardest is splitting the product into two distinct workflows instead of one: <strong>monitoring cycle readiness</strong> (which runs are at risk, across the whole portfolio) and <strong>investigating an exception</strong> (resolving one case, with full evidence). Most reconciliation tools collapse these into a single exception list — but a controller and an analyst are asking fundamentally different questions at fundamentally different zoom levels, and forcing them through the same view was the thing I decided not to do.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Solution and workflow</h2>
+      </div>
+      <div class="case-copy">
+        <p>The product skeleton runs Cycle Readiness Dashboard → Initiate Run → Run Details → Exception Queue → Exception Investigation Workspace → Controller Review → Export/Sync → Audit History. Initiating a run moves a period through select, upload, validate, normalize, clean, match, and exception generation before anyone touches an exception by hand. The readiness workflow sits above all of it — an analyst or controller can see every active run, spot which ones are blocked, and jump straight into the one that needs attention, instead of hunting through a flat queue for what actually matters today.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>AI design</h2>
+      </div>
+      <div class="case-copy">
+        <p>Reconciliation is a domain where the AI cannot be allowed to guess quietly — a wrong auto-approval touches a financial statement. So the split between deterministic logic, AI assistance, and human judgment isn't a nice-to-have, it's the core design constraint. Deterministic rules own anything with one correct answer: file schema checks, date formatting, duplicate detection, exact matching. AI is scoped to the ambiguous middle — suggesting matches, summarizing evidence, surfacing related records, generating explanations — but every one of those outputs has to show its supporting evidence, by rule, not by convention. The human owns everything irreversible: approving or rejecting a suggested match, resolving or escalating an exception, final sign-off on a run. Overrides require a stated reason, which turns every disagreement with the AI into a data point instead of a silent rejection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trade-offs and metrics</h2>
+      </div>
+      <div class="case-copy">
+        <p>I kept live ERP integration, autonomous approvals, real-time reconciliation, and predictive fraud detection out of the MVP — CSV upload and a simulated ERP sync are enough to prove the investigation workflow without the risk of an AI system touching production financial data before it's earned that trust. One judgment call I made rather than treating as settled: readiness isn't based on exception count alone, since a run with three blocked high-risk cases is less "ready" than one with twenty trivial ones — that weighting is a business rule I'd want to validate directly with a controller before shipping. Since this is a portfolio build, I'm not claiming close-time or backlog numbers I don't have. What I'd track in a real deployment: AI suggestion acceptance rate and override rate together (they tell you whether analysts trust the AI or are rubber-stamping it), confidence calibration (whether the AI's stated confidence actually predicts correctness), and exception resolution time as the outcome metric that matters to the business.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I would bring to your team</h2>
+      </div>
+      <div class="case-copy">
+        <p>This is the project that best proves I can design AI for a domain where being wrong has real consequences, not just an annoying one. Evidence-required recommendations and reason-required overrides aren't UX polish — they're the mechanism that makes an AI system auditable in a regulated workflow. That's the specific muscle I'd bring to any enterprise product where the model's output is about to become a financial, legal, or operational decision someone has to stand behind.</p>
+        <p class="architecture-link"><a href="#" target="_blank" rel="noopener">View detailed architecture ↗</a></p>
       </div>
     </div>
   </section>
