@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document Intelligence — Rajesh Sahu</title>
-<meta name="description" content="Case study: Document Intelligence.">
+<meta name="description" content="Case study: Document Intelligence, an AI-powered vendor document review and verification workspace.">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,13 +27,15 @@
     <div class="wrap">
       <span class="section-label">04 — Selected project</span>
       <h1 class="project-title">Document Intelligence</h1>
-      <p class="project-tags">Document AI · Extraction · Data structuring</p>
+      <p class="project-tags">Vendor onboarding · Document AI · Verification</p>
       <p class="project-oneliner">
-        An AI document processing system that extracts, validates, classifies, and structures information from business documents such as invoices, payslips, contracts, and IDs — transforming unstructured documents into reliable, searchable business data.
+        An AI-powered vendor document review and verification workspace that helps operations
+        teams classify submitted documents, extract key information, catch missing or
+        inconsistent details, and resolve exceptions before activating a vendor.
       </p>
       <div class="cta-row">
-        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Open Prototype ↗</a>
-        <a class="cta-button" href="#" target="_blank" rel="noopener">Try Product ↗</a>
+        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Live Prototype ↗</a>
+        <a class="cta-button" href="#" target="_blank" rel="noopener">60–90s Demo ↗</a>
       </div>
     </div>
   </section>
@@ -41,11 +43,10 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Read case study</h2>
+        <h2>Problem and impact</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — full case study coming soon</span>
-        <p>[Placeholder] Full writeup in progress — details on the problem, framing, key decisions, and outcome will go here.</p>
+        <p>Vendor onboarding analysts manually identify each submitted document, copy fields into internal systems, compare information across documents, check for missing paperwork, spot expired or unreadable files, chase vendors for corrections, and record why a vendor was approved or rejected — for every single case. OCR extracting text isn't the hard part. The real question an analyst has to answer is whether the vendor's information is complete, consistent, valid, and safe to approve — and today that judgment lives entirely in someone's head, re-derived from scratch each time. Get it wrong and the cost shows up downstream: payment failures, duplicate vendor records, or a compliance incident traced back to a vendor that should never have been activated.</p>
       </div>
     </div>
   </section>
@@ -53,11 +54,55 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Architecture</h2>
+        <h2>My role and decisions</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — system detail coming soon</span>
-        <p>[Placeholder] Architecture and system design detail will go here once finalized.</p>
+        <p>I defined the product principles and workflow. The decision I'd defend hardest is making the product case-centric rather than document-centric — everything organizes around one vendor onboarding case, so the analyst is asking "is this vendor ready?" instead of manually inspecting six unrelated files one at a time. I paired that with exception-first review: the system silently processes high-confidence, policy-compliant fields and only surfaces what actually needs a human — missing information, conflicting fields, low-confidence extractions, expired documents, policy violations. That second decision is what keeps this from becoming a dashboard nobody uses; reviewing every extracted field by hand would defeat the entire point of extracting it automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Solution and workflow</h2>
+      </div>
+      <div class="case-copy">
+        <p>The pipeline runs intake → classification → extraction → validation → exception generation → investigation → vendor follow-up → approval → sync and audit. An analyst creates a case with vendor details and a required-document checklist, the system checks file health (readable, not duplicate, not corrupted or password-protected), classifies each document type — PAN, GST certificate, cancelled cheque, incorporation certificate, and so on, correctable by the analyst — then extracts fields into one unified vendor profile. Every value stays linked to its source evidence. A dedicated processing-status screen shows exactly which pipeline stage is active, which directly fixes a gap I ran into on the reconciliation prototype, where users often couldn't tell what stage their run was actually in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>AI design</h2>
+      </div>
+      <div class="case-copy">
+        <p>AI owns document classification, field extraction, table and layout understanding, locating source evidence, catching semantic inconsistencies, explaining exceptions, suggesting corrections, and drafting vendor communication. Deterministic rules own anything checkable exactly: the required-document checklist, format validation (is the PAN or GSTIN structurally valid), date and expiry checks, checksum validation, duplicate detection. A human confirms ambiguous values, evaluates business context, reviews high-risk mismatches, and is the only one who can approve or reject a vendor — AI never independently activates one. The detail I'd point to as the strongest AI-design call in this project is the vendor follow-up message itself: instead of a generic "your documents are incorrect," it names the exact conflict — bank proof shows one legal name, registration shows another — so a vendor can resolve it in one round trip instead of a back-and-forth email chain.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trade-offs and metrics</h2>
+      </div>
+      <div class="case-copy">
+        <p>I kept real government database verification, live ERP integration, fraud detection models, and fully autonomous approval out of scope — external verification, ERP sync, and vendor communication are all simulated in the prototype. That keeps the build believable without pretending to solve every part of vendor compliance in an MVP. Since this hasn't shipped, I'm not claiming production numbers. What I'd track: average time from document submission to approval-ready status as the single outcome metric, the percentage of cases processed without manual field entry, AI recommendation acceptance rate alongside human correction rate as a trust signal, and — the metric that actually matters to the business — the incorrect-vendor-activation rate, since a wrongly approved vendor is a payment failure or compliance incident waiting to surface.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I would bring to your team</h2>
+      </div>
+      <div class="case-copy">
+        <p>The sharpest thing this project proves is a distinction I keep returning to: don't build an extraction dashboard, build a decision workspace. OCR accuracy is a largely solved problem; the real product question starts after extraction — can an analyst trust that a vendor is complete, consistent, and safe to approve without re-checking every document by hand. That's the judgment I'd bring to any team building on top of a model: knowing where the interesting product work actually begins once extraction stops being the hard part.</p>
+        <p class="architecture-link"><a href="#" target="_blank" rel="noopener">View detailed architecture ↗</a></p>
       </div>
     </div>
   </section>

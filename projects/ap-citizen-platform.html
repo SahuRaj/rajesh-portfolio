@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AP Citizen Platform — Rajesh Sahu</title>
-<meta name="description" content="Case study: AP Citizen Platform.">
+<title>Vaani — AP Citizen Platform — Rajesh Sahu</title>
+<meta name="description" content="Case study: Vaani, a mobile-first, Aadhaar-free citizen grievance platform for Andhra Pradesh.">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,14 +26,16 @@
   <section class="project-hero">
     <div class="wrap">
       <span class="section-label">05 — Selected project</span>
-      <h1 class="project-title">AP Citizen Platform</h1>
+      <h1 class="project-title">Vaani — AP Citizen Platform</h1>
       <p class="project-tags">GovTech · Citizen services · AI triage</p>
       <p class="project-oneliner">
-        A citizen grievance management platform that enables people to report public issues while helping government officials prioritize, track, and resolve complaints efficiently — with AI assisting on categorization, routing, duplicate detection, and executive summaries.
+        Vaani — Telugu for "voice" — is a mobile-first citizen grievance platform for Andhra
+        Pradesh, built for citizens the state's official system leaves out. No Aadhaar login,
+        Telugu-first, file a complaint from any phone in under three minutes.
       </p>
       <div class="cta-row">
-        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Open Prototype ↗</a>
-        <a class="cta-button" href="#" target="_blank" rel="noopener">Try Product ↗</a>
+        <a class="cta-button primary" href="https://vaani-ecru.vercel.app/" target="_blank" rel="noopener">Live Prototype ↗</a>
+        <a class="cta-button" href="#" target="_blank" rel="noopener">60–90s Demo ↗</a>
       </div>
     </div>
   </section>
@@ -41,11 +43,10 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Read case study</h2>
+        <h2>Problem and impact</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — full case study coming soon</span>
-        <p>[Placeholder] Full writeup in progress — details on the problem, framing, key decisions, and outcome will go here.</p>
+        <p>Andhra Pradesh already has an official grievance system, PGRS — but it requires Aadhaar eKYC to log in. Any citizen whose Aadhaar-linked mobile number is outdated or no longer active simply can't get in, and that's not a rare edge case. It disproportionately locks out exactly the citizens least equipped to fight the problem through informal channels — older residents, rural citizens, people who've changed numbers and never updated the link. The state's own core complaint channel has a structural access gap, which means an entire segment of civic issues — bad roads, water outages, power cuts — never gets recorded at all, not because nobody complained, but because they couldn't log in to complain.</p>
       </div>
     </div>
   </section>
@@ -53,11 +54,55 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Architecture</h2>
+        <h2>My role and decisions</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — system detail coming soon</span>
-        <p>[Placeholder] Architecture and system design detail will go here once finalized.</p>
+        <p>I designed and built Vaani solo, end to end. The decision I'd defend hardest is treating Aadhaar-free and Telugu-first as the starting constraint, not a later accessibility add-on — that choice is what removed the login wall entirely rather than trying to patch around it, and it's why every screen is Telugu by default rather than an English product with a translation toggle. I also decided the platform needed real government-facing surfaces from day one — Officer Login and a CM View — rather than staying a citizen-only form. A grievance channel that only collects complaints without anyone institutionally accountable to act on them isn't a fix, it's a louder complaint box.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Solution and workflow</h2>
+      </div>
+      <div class="case-copy">
+        <p>The flow is file → get an ID → government acts → track and close. A citizen describes the issue, attaches a photo, and picks a district and department — Roads & Infrastructure, Water Supply, Electricity, Health & Medical, Education, Municipal Services, Revenue & Land, or Agriculture. They get a unique complaint ID by SMS immediately (e.g. AP-2026-CTR-00421), and the complaint routes to the right department with an SLA deadline attached. A Community section lets other citizens see and upvote nearby issues, which surfaces recurring problems instead of losing them across a dozen isolated duplicate reports. Officer Login and CM View give the government side matching visibility into the same data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>AI design</h2>
+      </div>
+      <div class="case-copy">
+        <p>Vaani is deliberately the quietest AI product in the portfolio, because a wrong automated action on a citizen's complaint — misrouted, prematurely closed — damages the one channel they have to be heard. Deterministic rules own department assignment logic and SLA deadlines once a category is picked. AI is scoped narrowly: suggesting routing when a complaint's free-text description is ambiguous, flagging likely duplicate or near-duplicate reports by combining GPS proximity with description similarity so the community view consolidates instead of fragments, and generating executive summaries for the CM View so leadership sees patterns across districts, not a raw row count. A human — the assigned officer — confirms routing and closes the complaint; nothing gets marked resolved by AI alone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trade-offs and metrics</h2>
+      </div>
+      <div class="case-copy">
+        <p>This is a solo civic-tech pilot, not connected to PGRS or any government backend — the site says so directly, because claiming institutional legitimacy it doesn't have yet would undercut the actual ask, which is collaboration with the AP government. Dropping authentication entirely was a deliberate trade-off: it removes the access barrier but opens the door to spam or duplicate filings, which I chose to manage through GPS tagging and community upvoting — surfacing patterns rather than blocking submission outright. If this moved toward real adoption, I'd want to track the percentage of complaints filed by citizens without a working Aadhaar-linked login (the direct measure of the access gap actually closing), median time to first department action, SLA breach rate by department, and whether community upvotes correlate with what actually gets prioritized.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I would bring to your team</h2>
+      </div>
+      <div class="case-copy">
+        <p>Vaani is the project that proves I'll ship something real and public alone, without waiting for a team or a mandate — it's a live, bilingual, working product, not a deck. It's also the clearest example of a pattern across my work applied to public-sector stakes: treating an access gap as the actual design problem, not something to smooth over with a better onboarding flow. The fix here wasn't a feature — it was rebuilding the entry point around who the existing system was quietly excluding.</p>
+        <p class="architecture-link"><a href="#" target="_blank" rel="noopener">View detailed architecture ↗</a></p>
       </div>
     </div>
   </section>

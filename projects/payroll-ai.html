@@ -32,8 +32,8 @@
         An AI-powered payroll operations platform that automates document processing, payroll validation, anomaly detection, and employee issue resolution — reducing manual effort while improving payroll accuracy and compliance.
       </p>
       <div class="cta-row">
-        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Open Prototype ↗</a>
-        <a class="cta-button" href="#" target="_blank" rel="noopener">Try Product ↗</a>
+        <a class="cta-button primary" href="#" target="_blank" rel="noopener">Live Prototype ↗</a>
+        <a class="cta-button" href="#" target="_blank" rel="noopener">60–90s Demo ↗</a>
       </div>
     </div>
   </section>
@@ -41,11 +41,10 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Read case study</h2>
+        <h2>Problem and impact</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — full case study coming soon</span>
-        <p>[Placeholder] Full writeup in progress — details on the problem, framing, key decisions, and outcome will go here.</p>
+        <p>A payroll specialist can spend hours cross-checking spreadsheets, HRIS records, and supporting documents before a payroll run — and still miss the one mismatch that matters. Unlike most back-office errors, a payroll mistake isn't abstract: it shows up directly in someone's bank account, and it surfaces immediately as an employee complaint, a compliance penalty, or a rework cycle after the money has already moved. That's what makes this different from generic anomaly detection — the cost of missing something isn't a bad report, it's a person getting paid the wrong amount.</p>
       </div>
     </div>
   </section>
@@ -53,11 +52,55 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Architecture</h2>
+        <h2>My role and decisions</h2>
       </div>
       <div class="case-copy">
-        <span class="placeholder-note">Placeholder — system detail coming soon</span>
-        <p>[Placeholder] Architecture and system design detail will go here once finalized.</p>
+        <p>I defined the exception taxonomy and the workflow that turns it into something usable under deadline pressure. The decision I'd defend hardest is ordering the exception queue by payroll-blocking status and cut-off proximity first, ahead of raw risk score. Most detection tools sort by severity alone — but in payroll, the scarce resource isn't accuracy, it's time before the cut-off, and a medium-risk issue that blocks the whole run needs attention before a high-risk issue that doesn't. I also scoped employees out of the MVP as direct users; the loop is specialist and manager only, because adding employee-facing resolution before the core detection workflow is proven would have diluted the one thing worth testing first.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Solution and workflow</h2>
+      </div>
+      <div class="case-copy">
+        <p>The cycle runs start → import → validate/normalize → detect exceptions → prioritize queue → investigate and resolve → manager review → finalize. A specialist starts a cycle by selecting the payroll month, entity, jurisdiction, and cut-off date, then imports sample HRIS, spreadsheet, attendance, and document data — preloaded files stand in for live integrations at this stage. Every detected exception carries a risk level, confidence score, payroll impact, explanation, and recommended action, so the specialist opens each one already knowing why it's there instead of starting from a blank investigation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>AI design</h2>
+      </div>
+      <div class="case-copy">
+        <p>Five exception types anchor the detection logic — salary input mismatches, missing or invalid documents, unusual earnings or deductions, joiner/leaver proration errors, and compliance violations — and each one gets handled by the layer best suited to it. Deterministic rules own anything calculable: missing required fields, duplicate records, proration math, threshold violations, invalid dates. AI is scoped to interpretation: extracting values from salary letters and receipts, flagging why a deduction looks unusual against an employee's history, summarizing evidence, recommending a likely correction. The human — specialist or manager — owns every actual change: confirming corrections, resolving ambiguous cases, approving high-risk exceptions, final payroll sign-off. The AI recommends and explains; it never autonomously changes an employee's salary, because that line is exactly where a good suggestion and an unauthorized paycheck edit stop being the same thing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trade-offs and metrics</h2>
+      </div>
+      <div class="case-copy">
+        <p>I kept live HRIS/payroll system integration and full statutory rule coverage out of the MVP — preloaded sample files and simulated compliance rules are enough to prove the detection and resolution workflow without needing to encode every jurisdiction's payroll law upfront. Employee-facing issue resolution is deferred for the same reason: prove the specialist's workflow works before adding a second user type to design for. Since this is a portfolio build, I'm not claiming real reduction numbers. What I'd track in production: the percentage of payroll-blocking exceptions caught before cut-off (the metric that actually prevents a bad payroll run), time to resolve high-risk exceptions, the override rate on AI recommendations as a trust signal, and post-payroll rework — corrections needed after the file has already gone out.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I would bring to your team</h2>
+      </div>
+      <div class="case-copy">
+        <p>This project sharpens the same instinct as my other work — AI recommends, humans decide on anything irreversible — against a domain with an unusually short feedback loop: a mistake here is someone's paycheck, discovered within days, not a metric that drifts quietly over a quarter. That forces the deterministic/AI/human boundary to be exact rather than approximate, which is the kind of precision I'd bring to any product where the model's output turns into money moving or a compliance obligation being met.</p>
+        <p class="architecture-link"><a href="#" target="_blank" rel="noopener">View detailed architecture ↗</a></p>
       </div>
     </div>
   </section>
