@@ -42,21 +42,57 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="wrap">
-      <h1 class="hero-title">
-        Rajesh Sahu builds AI products that help people
-        <span class="hero-title-muted">make better decisions.</span>
-      </h1>
-      <p class="hero-sub">
-        I work at the intersection of product judgment and AI systems: ambiguous problem spaces,
-        human-AI interfaces, and decisions that need to be trustworthy, not just fast.
-      </p>
-      <nav class="hero-links">
-        <a href="#projects">Selected projects <span class="arrow">↘</span></a>
-        <a href="#contact">Contact <span class="arrow">↘</span></a>
-      </nav>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1 class="hero-title">
+          Rajesh Sahu builds AI products that help people
+          <span class="hero-title-muted">make better decisions.</span>
+        </h1>
+        <p class="hero-sub">
+          I work at the intersection of product judgment and AI systems: ambiguous problem spaces,
+          human-AI interfaces, and decisions that need to be trustworthy, not just fast.
+        </p>
+        <nav class="hero-links">
+          <a href="#projects">Selected projects <span class="arrow">↘</span></a>
+          <a href="#contact">Contact <span class="arrow">↘</span></a>
+        </nav>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="rajesh-headshot.jpg" alt="Rajesh Sahu" class="hero-photo" width="220" height="220" loading="eager">
+      </div>
     </div>
   </section>
+
+  <style>
+    /* Hero photo layout — added inline; fold into styles.css whenever convenient */
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 56px;
+    }
+    .hero-copy { flex: 1 1 auto; min-width: 0; }
+    .hero-photo-wrap { flex: 0 0 auto; }
+    .hero-photo {
+      display: block;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 16px;
+      border: 1px solid rgba(237, 234, 226, 0.14);
+    }
+    @media (max-width: 860px) {
+      .hero-inner {
+        flex-direction: column-reverse;
+        gap: 28px;
+      }
+      .hero-photo {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
 
   <!-- ============ NOW ============ -->
   <section class="now-strip">
