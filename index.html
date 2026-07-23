@@ -181,38 +181,67 @@
     </div>
   </section>
 
-  <!-- ============ EXPERIMENTS ============ -->
+  <!-- ============ AI PRODUCT LABS ============ -->
   <section class="section" id="experiments">
     <div class="wrap">
       <div class="section-head">
-        <h2>Experiments</h2>
-        <span class="section-label">Weekend experiments</span>
+        <h2>AI Product Labs</h2>
+        <span class="section-label">Small experiments exploring AI reliability, human oversight, and product decision-making</span>
       </div>
 
-      <div class="exp-grid">
-        <a class="exp-card" href="#" target="_blank" rel="noopener">
-          <span class="exp-name">PM Copilot</span>
-          <span class="exp-arrow">↗</span>
+      <div class="exp-grid exp-grid-two">
+        <a class="exp-card exp-card-featured" href="https://ai-evaluation-lab-beige.vercel.app/" target="_blank" rel="noopener">
+          <div class="exp-card-head">
+            <span class="exp-name">AI Output Evaluation Lab</span>
+            <span class="exp-arrow">↗</span>
+          </div>
+          <p class="exp-question">How should a PM decide whether an AI feature is reliable enough to ship?</p>
+          <p class="exp-desc">
+            Compares three extraction configurations — zero-shot, few-shot, and structured schema with a self-check
+            pass — on accuracy, hallucination rate, cost per run, latency, and how much still needs a human at an
+            adjustable review threshold.
+          </p>
+          <p class="exp-learning"><span class="exp-learning-label">Finding —</span> the mid-cost config matched the most expensive one's accuracy at under half the cost and latency. The pricier option didn't automatically win.</p>
         </a>
-        <a class="exp-card" href="#" target="_blank" rel="noopener">
-          <span class="exp-name">Product Design Critic</span>
-          <span class="exp-arrow">↗</span>
-        </a>
-        <a class="exp-card" href="#" target="_blank" rel="noopener">
-          <span class="exp-name">Prompt Playground</span>
-          <span class="exp-arrow">↗</span>
-        </a>
-        <a class="exp-card" href="#" target="_blank" rel="noopener">
-          <span class="exp-name">Movie Recommendation Engine</span>
-          <span class="exp-arrow">↗</span>
-        </a>
-        <a class="exp-card" href="#" target="_blank" rel="noopener">
-          <span class="exp-name">Finance AI Sandbox</span>
-          <span class="exp-arrow">↗</span>
+
+        <a class="exp-card exp-card-featured" href="https://confidence-threshold-simulator.vercel.app/" target="_blank" rel="noopener">
+          <div class="exp-card-head">
+            <span class="exp-name">Confidence Threshold Simulator</span>
+            <span class="exp-arrow">↗</span>
+          </div>
+          <p class="exp-question">At what AI confidence level should a decision auto-approve versus require human review?</p>
+          <p class="exp-desc">
+            120 AI-screened expense decisions, split across auto-approve / analyst review / manual investigation by two
+            adjustable thresholds — with automation rate, missed issues, financial exposure, and false positives
+            recalculating live wherever you set them.
+          </p>
+          <p class="exp-learning"><span class="exp-learning-label">Finding —</span> a $2,140 fraudulent claim scored 94% confidence by the model. High confidence and being right aren't the same thing — the default threshold lets it through with zero human review.</p>
         </a>
       </div>
     </div>
   </section>
+
+  <style>
+    /* AI Product Labs cards — added inline; fold into styles.css whenever convenient */
+    .exp-grid-two { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 860px) {
+      .exp-grid-two { grid-template-columns: 1fr 1fr; }
+    }
+    .exp-card-featured {
+      display: block;
+      padding: 24px 28px;
+      border: 1px solid rgba(237, 234, 226, 0.16);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: border-color 0.2s ease;
+    }
+    .exp-card-featured:hover { border-color: rgba(201, 162, 39, 0.6); }
+    .exp-card-head { display: flex; align-items: center; justify-content: space-between; }
+    .exp-question { margin: 14px 0 0; font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 16px; opacity: 0.92; }
+    .exp-desc { margin: 10px 0 0; font-size: 14px; line-height: 1.6; opacity: 0.72; }
+    .exp-learning { margin: 14px 0 0; font-size: 13.5px; line-height: 1.6; opacity: 0.85; }
+    .exp-learning-label { opacity: 0.6; text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em; }
+  </style>
 
 
   <!-- ============ BIO ============ -->
