@@ -36,7 +36,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <span class="eyebrow">Portfolio / AI Product Management</span>
-      <span class="header-meta">India · Available selectively</span>
+      <span class="header-meta">India · Open to AI product roles</span>
     </div>
   </header>
 
@@ -45,8 +45,8 @@
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <h1 class="hero-title">
-          Rajesh Sahu builds AI products that help people
-          <span class="hero-title-muted">make better decisions.</span>
+          Rajesh Sahu builds AI products that help people make
+          <span class="hero-title-muted">better decisions.</span>
         </h1>
         <p class="hero-sub">
           I work at the intersection of product judgment and AI systems: ambiguous problem spaces,
@@ -54,42 +54,48 @@
         </p>
         <nav class="hero-links">
           <a href="#projects">Selected projects <span class="arrow">↘</span></a>
+          <a href="#" target="_blank" rel="noopener">Resume <span class="arrow">↘</span></a>
+          <a href="https://www.linkedin.com/in/sahu-rajesh-160608/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↘</span></a>
           <a href="#contact">Contact <span class="arrow">↘</span></a>
         </nav>
       </div>
       <div class="hero-photo-wrap">
-        <img src="rajesh-headshot.jpg" alt="Rajesh Sahu" class="hero-photo" width="220" height="220" loading="eager">
+        <img src="rajesh-headshot.jpg" alt="Rajesh Sahu" class="hero-photo" width="250" height="250" loading="eager">
       </div>
     </div>
   </section>
 
   <style>
     /* Hero photo layout — added inline; fold into styles.css whenever convenient */
+    .hero { padding-top: 20px; } /* estimate — reduce further if the gap under nav still looks large */
     .hero-inner {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 56px;
     }
     .hero-copy { flex: 1 1 auto; min-width: 0; }
-    .hero-photo-wrap { flex: 0 0 auto; }
+    .hero-photo-wrap { flex: 0 0 auto; margin-top: 90px; } /* estimate — nudges top of photo toward the "builds AI" line; adjust to taste once rendered */
     .hero-photo {
       display: block;
-      width: 220px;
-      height: 220px;
+      width: 250px;
+      height: 250px;
       object-fit: cover;
       object-position: center top;
       border-radius: 16px;
       border: 1px solid rgba(237, 234, 226, 0.14);
     }
+    .hero-title-muted { color: rgba(236, 232, 224, 0.72) !important; } /* brightened estimate — was likely dimmer before */
+    .hero-sub { color: rgba(236, 232, 224, 0.82) !important; } /* brightened for readability */
     @media (max-width: 860px) {
       .hero-inner {
         flex-direction: column-reverse;
         gap: 28px;
       }
+      .hero-photo-wrap { margin-top: 0; }
       .hero-photo {
-        width: 150px;
-        height: 150px;
+        width: 170px;
+        height: 170px;
       }
     }
   </style>
